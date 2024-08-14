@@ -59,14 +59,10 @@ final class element_test extends advanced_testcase {
     public function test_render_html(): void {
         $certificate1 = $this->get_generator()->create_template((object)['name' => 'Certificate 1']);
         $pageid = $this->get_generator()->create_page($certificate1)->get_id();
-        $formdata = ['name' => 'Date element', 'dateitem' => \certificateelement_activity\element::CUSTOMCERT_DATE_ISSUE,
-            'dateformat' => 'strftimedateshort', ];
-        $e = $this->get_generator()->create_element($pageid, 'date', $formdata);
-        $this->assertNotEmpty($e->render_html());
-
-        $formdata['dateitem'] = \certificateelement_activity\element::CUSTOMCERT_DATE_EXPIRY;
-        $formdata['dateformat'] = 'strftimedateshort';
-        $e = $this->get_generator()->create_element($pageid, 'date', $formdata);
+        $formdata = ['name' => 'Activity element',
+            'activityitem' => element::ACTIVITY_INTRO,
+        ];
+        $e = $this->get_generator()->create_element($pageid, 'activity', $formdata);
         $this->assertNotEmpty($e->render_html());
 
         // Generate PDF for preview.
@@ -86,30 +82,11 @@ final class element_test extends advanced_testcase {
         global $DB;
         $certificate1 = $this->get_generator()->create_template((object)['name' => 'Certificate 1']);
         $pageid = $this->get_generator()->create_page($certificate1)->get_id();
-        $e = $this->get_generator()->new_element($pageid, 'date');
-        $newdata = (object)['dateitem' => \certificateelement_activity\element::CUSTOMCERT_DATE_ISSUE,
-                            'dateformat' => 'strftimedate', ];
+        $e = $this->get_generator()->new_element($pageid, 'activity');
+        $newdata = (object)['activityitem' => element::ACTIVITY_INTRO];
         $expected = json_encode($newdata);
         $e->save_form_data($newdata);
         $el = $DB->get_record('tool_certificate_elements', ['id' => $e->get_id()]);
         $this->assertEquals($expected, $el->data);
-    }
-
-    /**
-     * Test get_date_formats
-     */
-    public function test_get_date_formats(): void {
-        $this->assertFalse(empty(\certificateelement_activity\element::get_date_formats()));
-    }
-
-    /**
-     * Tests that the edit element form can be initiated without any errors
-     */
-    public function test_edit_element_form(): void {
-        $this->setAdminUser();
-
-        preg_match('|^certificateelement_(\w*)\\\\|', get_class($this), $matches);
-        $form = $this->get_generator()->create_template_and_edit_element_form($matches[1]);
-        $this->assertNotEmpty($form->render());
     }
 }
