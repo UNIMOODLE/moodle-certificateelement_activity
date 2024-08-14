@@ -101,25 +101,18 @@ class element extends \tool_certificate\element {
      * @param \stdClass $issue the issue we are rendering
      */
     public function render($pdf, $preview, $user, $issue) {
-        global $DB;
-
-        // TODO: tengo que asociarlo con la table mod_certifygen_validation.
-        $params = ['userid' => (int)$user->id, 'issueid' => (int)$issue->id];
-        $validation = certifygen_validations::get_record($params);
-        error_log(__FUNCTION__ . ' params: '.var_export($params, true));
-        error_log(__FUNCTION__ . ' validation: '.var_export($validation, true));
-        $name = '';
         $certifygen = null;
-        if ($validation) {
-            $model = new certifygen_model((int)$validation->get('modelid'));
-            error_log(__FUNCTION__ . ' model: '.var_export($model, true));
-            $certifygen = certifygen::get_record(['modelid' => $model->get('id'), 'course' => $issue->courseid]);
-            error_log(__FUNCTION__ . ' certifygen: '.var_export($certifygen, true));
+        if (!is_null($issue)) {
+            $params = ['userid' => (int)$user->id, 'issueid' => (int)$issue->id];
+            $validation = certifygen_validations::get_record($params);
+            $name = '';
+            if ($validation) {
+                $model = new certifygen_model((int)$validation->get('modelid'));
+                $certifygen = certifygen::get_record(['modelid' => $model->get('id'), 'course' => $issue->courseid]);
+            }
         }
-        error_log(__FUNCTION__ . ' this->get_data(): '.var_export($this->get_data(), true));
         // Decode the information stored in the database.
         $datainfo = @json_decode($this->get_data(), true) + ['activityitem' => ''];
-        error_log(__FUNCTION__ . ' datainfo: '.var_export($datainfo, true));
         // If we are previewing this certificate then just show a demonstration date.
         if ($preview) {
             $name = get_string('activityexamplename', 'certificateelement_activity');
@@ -127,9 +120,10 @@ class element extends \tool_certificate\element {
             $name = $certifygen->get('name');
         } else if ($datainfo['activityitem'] == self::ACTIVITY_INTRO && !is_null($certifygen)) {
             $name = $certifygen->get('intro');
-
-            $name = format_module_intro($module, $activity, $cmid);
-            $name = trim(format_text($name, $certifygen->get('introformat'), $options, null));
+//            $data = get_course_and_cm_from_instance($certifygen, 'certifygen');
+//            $cm = $data[1];
+//            $name = format_module_intro('certifygen', $certifygen, $cm->id);
+            $name = trim(format_text($name, $certifygen->get('introformat')));
         }
 
         // Ensure that a date has been set.
