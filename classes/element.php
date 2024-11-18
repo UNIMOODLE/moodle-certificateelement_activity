@@ -64,7 +64,6 @@ class element extends \tool_certificate\element {
      * This function renders the form elements when adding a certificate element.
      *
      * @param \MoodleQuickForm $mform the edit_form instance
-     * @throws \coding_exception
      */
     public function render_form_elements($mform) {
 
@@ -97,7 +96,6 @@ class element extends \tool_certificate\element {
      * @param bool $preview true if it is a preview, false otherwise
      * @param \stdClass $user the user we are rendering this for
      * @param \stdClass $issue the issue we are rendering
-     * @throws \coding_exception
      */
     public function render($pdf, $preview, $user, $issue) {
         $certifygen = null;
