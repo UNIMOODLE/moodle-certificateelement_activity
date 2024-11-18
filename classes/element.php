@@ -13,7 +13,6 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-
 // Project implemented by the "Recovery, Transformation and Resilience Plan.
 // Funded by the European Union - Next GenerationEU".
 //
@@ -31,7 +30,6 @@
  * @author     3IPUNT <contacte@tresipunt.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 namespace certificateelement_activity;
 
 use mod_certifygen\persistents\certifygen;
@@ -39,7 +37,7 @@ use mod_certifygen\persistents\certifygen_model;
 use mod_certifygen\persistents\certifygen_validations;
 
 defined('MOODLE_INTERNAL') || die();
-
+global $CFG;
 require_once($CFG->dirroot . '/lib/grade/constants.php');
 
 /**
@@ -52,7 +50,6 @@ require_once($CFG->dirroot . '/lib/grade/constants.php');
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class element extends \tool_certificate\element {
-
     /**
      * @var int Show activity name
      */
@@ -67,6 +64,7 @@ class element extends \tool_certificate\element {
      * This function renders the form elements when adding a certificate element.
      *
      * @param \MoodleQuickForm $mform the edit_form instance
+     * @throws \coding_exception
      */
     public function render_form_elements($mform) {
 
@@ -99,6 +97,7 @@ class element extends \tool_certificate\element {
      * @param bool $preview true if it is a preview, false otherwise
      * @param \stdClass $user the user we are rendering this for
      * @param \stdClass $issue the issue we are rendering
+     * @throws \coding_exception
      */
     public function render($pdf, $preview, $user, $issue) {
         $certifygen = null;
@@ -120,9 +119,6 @@ class element extends \tool_certificate\element {
             $name = $certifygen->get('name');
         } else if ($datainfo['activityitem'] == self::ACTIVITY_INTRO && !is_null($certifygen)) {
             $name = $certifygen->get('intro');
-//            $data = get_course_and_cm_from_instance($certifygen, 'certifygen');
-//            $cm = $data[1];
-//            $name = format_module_intro('certifygen', $certifygen, $cm->id);
             $name = trim(format_text($name, $certifygen->get('introformat')));
         }
 

@@ -22,7 +22,7 @@
 // Córdoba, Extremadura, Vigo, Las Palmas de Gran Canaria y Burgos..
 
 /**
- * This file contains the version information for the activity plugin.
+ * Strings for component 'certificateelement_activity', language 'en'.
  *
  * @package    certificateelement_activity
  * @copyright  2024 Proyecto UNIMOODLE
@@ -31,13 +31,10 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
-
-$plugin->component    = 'certificateelement_activity';
-$plugin->release      = 'v1.0.0';
-$plugin->version      = 2024042300;
-$plugin->requires     = 2022112802;
-$plugin->maturity     = MATURITY_STABLE;
-$plugin->dependencies = [
-    'mod_certifygen' => 2024060705,
-];
+$string['activityexamplename'] = 'Nome de Exemplo de Actividade';
+$string['activityexampleintro'] = 'Introdución de Exemplo de Actividade';
+$string['activityitem'] = 'Elemento de Actividade';
+$string['activityname'] = 'Nome da Actividade';
+$string['activityintro'] = 'Introdución da Actividade';
+$string['pluginname'] = 'Actividade';
+$string['privacy:metadata'] = 'O plugin de Actividade non almacena datos persoais.';
