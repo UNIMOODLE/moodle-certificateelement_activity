@@ -33,7 +33,7 @@ The plugin has been tested on the following versions:
 
 The plugin can also be installed by placing the contents of this directory in
 ```
-{your/moodle/dirroot}/admin/tool/certificate/activity
+{your/moodle/dirroot}/admin/tool/certificate/element/activity
 ```
 Then, log in to your Moodle site as an administrator and go to Site Administration > Notifications to complete the installation.
 
