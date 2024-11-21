@@ -104,8 +104,7 @@ class element extends \tool_certificate\element {
             $validation = certifygen_validations::get_record($params);
             $name = '';
             if ($validation) {
-                $model = new certifygen_model((int)$validation->get('modelid'));
-                $certifygen = certifygen::get_record(['modelid' => $model->get('id'), 'course' => $issue->courseid]);
+                $certifygen = certifygen::get_record(['id' => $validation->get('certifygenid'), 'course' => $issue->courseid]);
             }
         }
         // Decode the information stored in the database.
