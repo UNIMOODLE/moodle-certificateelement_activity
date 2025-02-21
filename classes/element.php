@@ -136,7 +136,14 @@ class element extends \tool_certificate\element {
     public function render_html() {
         // Decode the information stored in the database.
         $datainfo = @json_decode($this->get_data(), true) + ['activityitem' => ''];
-        return \tool_certificate\element_helper::render_html_content($this, $datainfo['activityitem']);
+        if ($datainfo['activityitem'] == self::ACTIVITY_NAME) {
+            $placeholdertext = get_string('activityexamplename', 'certificateelement_activity');
+        } else if ($datainfo['activityitem'] == self::ACTIVITY_INTRO) {
+            $placeholdertext = get_string('activityexampleintro', 'certificateelement_activity');
+        } else {
+            throw new \coding_exception('Invalid activity item');
+        }
+        return \tool_certificate\element_helper::render_html_content($this, $placeholdertext);
     }
 
     /**

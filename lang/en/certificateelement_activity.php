@@ -31,10 +31,10 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['activityexamplename'] = 'Activity Example Name';
-$string['activityexampleintro'] = 'Activity Example Intro';
-$string['activityitem'] = 'Activity item';
-$string['activityname'] = 'Activity name';
-$string['activityintro'] = 'Activity intro';
-$string['pluginname'] = 'Activity';
-$string['privacy:metadata'] = 'The Activity plugin does not store any personal data.';
+$string['activityexamplename'] = 'Certifygen Example Name';
+$string['activityexampleintro'] = '<p>This is a certifygen Example Intro.</p><p>This certificate is awarded for completing the following competencies:</p><ol><li>Competency 1</li><li>Competency 2</li><li>Competnecy 3</li></ol>';
+$string['activityitem'] = 'Certifygen item';
+$string['activityname'] = 'Certifygen name';
+$string['activityintro'] = 'Certifygen intro';
+$string['pluginname'] = 'Certifygen fields';
+$string['privacy:metadata'] = 'The Activity element plugin does not store any personal data.';

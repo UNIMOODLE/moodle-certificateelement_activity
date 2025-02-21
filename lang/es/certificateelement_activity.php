@@ -32,9 +32,9 @@
  */
 
 $string['activityexamplename'] = 'Nombre de Ejemplo de Actividad';
-$string['activityexampleintro'] = 'Introducción de Ejemplo de Actividad';
-$string['activityitem'] = 'Elemento de Actividad';
-$string['activityname'] = 'Nombre de Actividad';
-$string['activityintro'] = 'Introducción de Actividad';
-$string['pluginname'] = 'Actividad';
-$string['privacy:metadata'] = 'El plugin de Actividad no almacena datos personales.';
+$string['activityexampleintro'] = '<p>Esta es un ejemplo de texto Introducción de Certifygen.</p><p>Este certificado se otorga por completar las siguientes competencias:</p><ol><li>Competencia 1</li><li>Competencia 2</li><li>Competencia 3</li></ol>';
+$string['activityitem'] = 'Elemento de Certifygen';
+$string['activityname'] = 'Nombre de instancia Certifygen';
+$string['activityintro'] = 'Introducción de instancia Certifygen';
+$string['pluginname'] = 'Campos de Certifygen';
+$string['privacy:metadata'] = 'El plugin de Actividad element no almacena datos personales.';
