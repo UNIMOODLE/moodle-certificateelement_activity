@@ -3,13 +3,7 @@
 #  Certificate Element Activity #
 
 This is a Tool Certificate Subplugin Element type.
-This subplugin makes it possible to add the name or description of an activity to a certificate.
-
-## Compatibility ##
-
-The plugin has been tested on the following versions:
-
-* Moodle 4.1.1 (Build: 20230116) - 2022112801.00
+This subplugin makes it possible to add the name or description of an activity to a Certifygen template for certificates.
 
 ## Requirements ##
 
